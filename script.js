@@ -228,13 +228,22 @@ const handleUpdateCredits = (e) => {
 const showNotification = (message, type = 'success') => {
     notificationEl.textContent = message;
     notificationEl.className = `notification fixed top-5 right-5 p-4 rounded-lg text-white font-bold z-50 opacity-0 transform translate-y-[-20px] ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`;
+    
+    // Atraso mínimo para garantir que a transição CSS funcione
     setTimeout(() => {
-        notificationEl.classList.add('opacity-100', 'translate-y-0');
+        // Remove as classes que o escondem
         notificationEl.classList.remove('opacity-0', 'translate-y-[-20px]');
+        // Adiciona as classes que o tornam visível
+        notificationEl.classList.add('opacity-100', 'translate-y-0');
     }, 10);
+
+    // Define um tempo para o popup desaparecer
     setTimeout(() => {
+        // Remove as classes que o tornam visível
         notificationEl.classList.remove('opacity-100', 'translate-y-0');
-    }, 3000);
+        // Adiciona de volta as classes que o escondem para ativar a animação de saída
+        notificationEl.classList.add('opacity-0', 'translate-y-[-20px]');
+    }, 3000); // O popup desaparecerá após 3000ms (3 segundos)
 };
 
 const handleAddToCart = (item) => {
