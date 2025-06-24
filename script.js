@@ -1,4 +1,4 @@
-// --- APPLICATION STATE & STORAGE ---
+// --- ESTADO DA APLICAÇÃO E ARMAZENAMENTO ---
 const STORAGE_KEY = 'starWarsRPGState';
 
 const defaultState = {
@@ -9,7 +9,7 @@ const defaultState = {
     workshopInventory: [],
     activeTab: 'lojas',
     filters: { search: '', quality: 'all', category: 'all' },
-    itemDatabase: [...itemDatabase] // Use a copy
+    itemDatabase: [...itemDatabase] // Usa uma cópia da base de dados original
 };
 
 let state = JSON.parse(JSON.stringify(defaultState));
@@ -33,7 +33,7 @@ const loadState = () => {
     }
 };
 
-// --- DOM ELEMENTS ---
+// --- ELEMENTOS DO DOM ---
 const personalCreditsEl = document.getElementById('personal-credits');
 const workshopCreditsEl = document.getElementById('workshop-credits');
 const itemGridEl = document.getElementById('item-grid');
@@ -58,7 +58,7 @@ const closeModalBtn = document.getElementById('close-modal-btn');
 const customItemForm = document.getElementById('custom-item-form');
 
 
-// --- RENDER FUNCTIONS ---
+// --- FUNÇÕES DE RENDERIZAÇÃO ---
 const renderCredits = () => {
     personalCreditsEl.textContent = state.personalCredits.toLocaleString();
     workshopCreditsEl.textContent = state.workshopCredits.toLocaleString();
@@ -194,7 +194,7 @@ const renderCart = () => {
     document.querySelectorAll('.remove-from-cart-btn').forEach(btn => btn.addEventListener('click', (e) => handleRemoveFromCart(parseInt(e.target.dataset.index))));
 };
 
-// --- HANDLER FUNCTIONS ---
+// --- FUNÇÕES DE MANIPULAÇÃO (HANDLERS) ---
 const handleTabClick = (e) => {
     if (!e.target.matches('.tab-btn')) return;
     const tabName = e.target.dataset.tab;
@@ -322,7 +322,7 @@ const handleCustomItemSubmit = (e) => {
 
     const destination = document.querySelector('input[name="inventory"]:checked').value;
 
-    // Add to the main database and the correct inventory
+    // Adiciona ao banco de dados principal e ao inventário correto
     state.itemDatabase.push(newItem);
     if (destination === 'personal') {
         state.personalInventory.push(newItem);
@@ -338,7 +338,7 @@ const handleCustomItemSubmit = (e) => {
     customItemForm.reset();
 };
 
-// --- INITIALIZATION ---
+// --- INICIALIZAÇÃO ---
 const init = () => {
     loadState();
     
