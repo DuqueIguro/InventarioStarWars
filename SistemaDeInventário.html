@@ -69,6 +69,16 @@
          .btn-danger:hover {
             background-color: #d00000;
         }
+        
+        .btn-success {
+            background-color: #2a9d8f;
+            color: white;
+            transition: all 0.3s ease;
+             border: 1px solid #57cc99;
+        }
+         .btn-success:hover {
+            background-color: #26a269;
+        }
 
         .tab-active {
             background-color: #0077b6;
@@ -116,6 +126,16 @@
         .notification {
             transition: opacity 0.5s, transform 0.5s;
         }
+        
+        .modal-input {
+             background-color: #1e293b;
+             border: 1px solid #475569;
+             border-radius: 0.375rem;
+             padding: 0.5rem;
+        }
+        .modal-input:focus {
+             outline: 2px solid #00bfff;
+        }
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-8">
@@ -152,30 +172,37 @@
             </nav>
         </div>
 
-        <!-- Painéis de Conteúdo -->
+        <!-- Content Panes -->
         <div id="tab-content">
-            <!-- Painél do Lojas -->
+            <!-- Painél das Lojas -->
             <div id="lojas-pane" class="tab-pane">
-                <div class="glass-pane p-4 rounded-lg mb-4">
-                    <h3 class="font-orbitron text-lg mb-2 text-cyan-400">FILTROS DE BUSCA</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <input type="text" id="search-input" placeholder="Buscar por nome..." class="bg-gray-900 border border-gray-600 rounded-md p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
-                        <select id="quality-filter" class="bg-gray-900 border border-gray-600 rounded-md p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
-                            <option value="all">Todas as Qualidades</option>
-                            <option value="Lendária">Lendária</option>
-                            <option value="Imperial">Imperial</option>
-                            <option value="Excelente">Excelente</option>
-                            <option value="Boa">Boa</option>
-                            <option value="Normal">Normal</option>
-                            <option value="Baixa">Baixa</option>
-                        </select>
-                        <select id="category-filter" class="bg-gray-900 border border-gray-600 rounded-md p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
-                            <option value="all">Todas as Categorias</option>
-                            <option value="Naves Prontas">Naves Prontas</option>
-                            <option value="Dróides Prontos">Dróides Prontos</option>
-                            <option value="Peças de Naves">Peças de Naves</option>
-                            <option value="Peças de Dróides">Peças de Dróides</option>
-                        </select>
+                 <div class="glass-pane p-4 rounded-lg mb-4">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-grow">
+                             <h3 class="font-orbitron text-lg mb-2 text-cyan-400">FILTROS DE BUSCA</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <input type="text" id="search-input" placeholder="Buscar por nome..." class="bg-gray-900 border border-gray-600 rounded-md p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+                                <select id="quality-filter" class="bg-gray-900 border border-gray-600 rounded-md p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+                                    <option value="all">Todas as Qualidades</option>
+                                    <option value="Lendária">Lendária</option>
+                                    <option value="Imperial">Imperial</option>
+                                    <option value="Excelente">Excelente</option>
+                                    <option value="Boa">Boa</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Baixa">Baixa</option>
+                                </select>
+                                <select id="category-filter" class="bg-gray-900 border border-gray-600 rounded-md p-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+                                    <option value="all">Todas as Categorias</option>
+                                    <option value="Naves Prontas">Naves Prontas</option>
+                                    <option value="Dróides Prontos">Dróides Prontos</option>
+                                    <option value="Peças de Naves">Peças de Naves</option>
+                                    <option value="Peças de Dróides">Peças de Dróides</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="md:pl-4 md:border-l border-cyan-700 flex-shrink-0 flex items-center">
+                             <button id="add-custom-item-btn" class="btn-success font-bold py-2 px-4 rounded-md w-full h-fit">Adicionar Item Customizado</button>
+                        </div>
                     </div>
                 </div>
                 <div id="item-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[60vh] overflow-y-auto pr-2">
@@ -183,14 +210,14 @@
                 </div>
             </div>
 
-            <!-- Painél do Inventário Pessoal -->
+            <!-- Inventário Pessoal -->
             <div id="personagem-pane" class="tab-pane hidden">
                 <div id="personal-inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                      <!-- Personal inventory items will be injected here -->
                 </div>
             </div>
 
-            <!-- Painél do Inventário da Oficina -->
+            <!-- Inventário da Oficina -->
             <div id="oficina-pane" class="tab-pane hidden">
                 <div id="workshop-inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Workshop inventory items will be injected here -->
@@ -220,13 +247,55 @@
             <button id="checkout-btn" class="w-full btn-primary font-bold py-2 rounded-md">FINALIZAR COMPRA</button>
         </div>
     </div>
-
+    
+    <!-- Custom Item Modal -->
+    <div id="custom-item-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="glass-pane rounded-lg p-8 w-full max-w-lg">
+            <div class="flex justify-between items-center mb-4">
+                 <h2 class="font-orbitron text-2xl text-cyan-300">ADICIONAR ITEM CUSTOMIZADO</h2>
+                 <button id="close-modal-btn" class="text-2xl hover:text-red-500">&times;</button>
+            </div>
+            <form id="custom-item-form">
+                <div class="space-y-4">
+                    <input type="text" id="custom-item-name" placeholder="Nome do Item" class="modal-input w-full" required>
+                    <textarea id="custom-item-desc" placeholder="Descrição" class="modal-input w-full" rows="3" required></textarea>
+                    <input type="number" id="custom-item-price" placeholder="Preço em Créditos" class="modal-input w-full" min="0" required>
+                    <div class="grid grid-cols-2 gap-4">
+                        <select id="custom-item-quality" class="modal-input w-full" required>
+                            <option value="" disabled selected>Qualidade</option>
+                            <option value="Lendária">Lendária</option>
+                            <option value="Imperial">Imperial</option>
+                            <option value="Excelente">Excelente</option>
+                            <option value="Boa">Boa</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
+                        <select id="custom-item-category" class="modal-input w-full" required>
+                             <option value="" disabled selected>Categoria</option>
+                             <option value="Naves Prontas">Nave Pronta</option>
+                            <option value="Dróides Prontos">Dróide Pronto</option>
+                            <option value="Peças de Naves">Peça de Nave</option>
+                            <option value="Peças de Dróides">Peça de Dróide</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="mb-2 font-bold text-cyan-400">Adicionar ao Inventário:</p>
+                        <div class="flex gap-4">
+                            <label class="flex items-center"><input type="radio" name="inventory" value="personal" class="mr-2" checked> Pessoal</label>
+                            <label class="flex items-center"><input type="radio" name="inventory" value="workshop" class="mr-2"> Oficina</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full btn-success font-bold py-2 rounded-md">Salvar Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script>
-
-        const itemDatabase = [
+        // --- DATABASE ---
+        let itemDatabase = [
             
-            // -- PEÇAS DE NAVES / LENDÁRIA
+        // -- PEÇAS DE NAVES / LENDÁRIA
             { name: "Bobina de hiperespaço de precisão", category: "Peças de Naves", quality: "Lendária", price: 12800, description: "Uma bobina de nível de protótipo, que permite cálculos de micro-saltos em combate, uma tática favorecida pelos estrategistas Chiss." },
             { name: "Conversor de energia de fluxo otimizado", category: "Peças de Naves", quality: "Lendária", price: 4400, description: "Um conversor de energia de design experimental que otimiza a potência a níveis teóricos, permitindo rajadas de energia que podem sobrecarregar escudos inimigos." },
             { name: "Estabilizador de voo giroscópico", category: "Peças de Naves", quality: "Lendária", price: 9600, description: "Um estabilizador de voo que se adapta ao estilo de pilotagem, tornando a nave uma extensão do piloto." },
@@ -682,7 +751,7 @@
             { name: "Droide de Tradução Forense", category: "Dróides Prontos", quality: "Excelente", price: 38000, description: "Capaz de traduzir não apenas línguas, mas também de analisar padrões de fala para detetar mentiras e enganos." },
             { name: "Droide de Segurança com Campo de Força", category: "Dróides Prontos", quality: "Excelente", price: 65000, description: "Um dróide de segurança que pode projetar um pequeno campo de força pessoal para se proteger de ataques." },
             { name: "Droide Piloto de Corridas", category: "Dróides Prontos", quality: "Excelente", price: 70000, description: "Programado com os reflexos e a agressividade necessários para competir e vencer nas perigosas corridas de speeders." },
-            
+           
             // -- DRÓIDES PRONTOS / BOA
             { name: "Droide de Protocolo Série 3PO (Boa)", category: "Dróides Prontos", quality: "Boa", price: 6000, description: "Um modelo novo, fluente em todas as principais línguas comerciais e diplomáticas. Polido e profissional." },
             { name: "Droide Astromecânico Série R2 (Boa)", category: "Dróides Prontos", quality: "Boa", price: 9000, description: "Uma unidade R2 fiável e cheia de recursos, pronta para servir como co-piloto ou técnico de campo." },
@@ -753,26 +822,26 @@
         // --- APPLICATION STATE & STORAGE ---
         const STORAGE_KEY = 'starWarsRPGState';
         
-        let state = {
+        const defaultState = {
             personalCredits: 3500,
             workshopCredits: 10000,
-            cart: [], // { item, destination ('personal' or 'workshop') }
+            cart: [],
             personalInventory: [],
             workshopInventory: [],
             activeTab: 'lojas',
-            filters: {
-                search: '',
-                quality: 'all',
-                category: 'all'
-            }
+            filters: { search: '', quality: 'all', category: 'all' },
+            itemDatabase: [...itemDatabase] // Use a copy
         };
+        
+        let state = JSON.parse(JSON.stringify(defaultState));
 
         const saveState = () => {
             const stateToSave = {
                 personalCredits: state.personalCredits,
                 workshopCredits: state.workshopCredits,
                 personalInventory: state.personalInventory,
-                workshopInventory: state.workshopInventory
+                workshopInventory: state.workshopInventory,
+                itemDatabase: state.itemDatabase
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
         };
@@ -781,7 +850,6 @@
             const savedStateJSON = localStorage.getItem(STORAGE_KEY);
             if (savedStateJSON) {
                 const savedState = JSON.parse(savedStateJSON);
-                // Merge loaded state into the default state
                 Object.assign(state, savedState);
             }
         };
@@ -805,6 +873,11 @@
         const checkoutBtn = document.getElementById('checkout-btn');
         const notificationEl = document.getElementById('notification');
         const resetBtn = document.getElementById('reset-btn');
+        const addCustomItemBtn = document.getElementById('add-custom-item-btn');
+        const customItemModal = document.getElementById('custom-item-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const customItemForm = document.getElementById('custom-item-form');
+
 
         // --- RENDER FUNCTIONS ---
         const renderCredits = () => {
@@ -854,7 +927,7 @@
 
         const renderItems = () => {
             itemGridEl.innerHTML = '';
-            const filteredItems = itemDatabase.filter(item => {
+            const filteredItems = state.itemDatabase.filter(item => {
                 const searchMatch = item.name.toLowerCase().includes(state.filters.search.toLowerCase());
                 const qualityMatch = state.filters.quality === 'all' || item.quality === state.filters.quality;
                 const categoryMatch = state.filters.category === 'all' || item.category === state.filters.category;
@@ -943,7 +1016,6 @@
         };
 
         // --- HANDLER FUNCTIONS ---
-
         const handleTabClick = (e) => {
             if (!e.target.matches('.tab-btn')) return;
             const tabName = e.target.dataset.tab;
@@ -971,7 +1043,7 @@
                 else state.workshopCredits = value;
             }
             renderCredits();
-            saveState(); // Save state after editing credits
+            saveState();
         };
         
         const showNotification = (message, type = 'success') => {
@@ -1036,7 +1108,7 @@
             renderCart();
             cartEl.classList.add('translate-x-full');
             showNotification('Compra realizada com sucesso!', 'success');
-            saveState(); // Save state after checkout
+            saveState();
         };
 
         const handleRemoveFromInventory = (inventoryType, itemToRemove) => {
@@ -1047,19 +1119,49 @@
             }
             showNotification(`${itemToRemove.name} removido do inventário.`, 'danger');
             renderInventories();
-            saveState(); // Save state after removing item
+            saveState();
         };
         
         const handleReset = () => {
-            if (confirm('Tem certeza que deseja resetar todo o progresso? Créditos e inventários serão perdidos.')) {
+            if (confirm('Tem certeza que deseja resetar todo o progresso? Créditos, inventários e itens customizados serão perdidos.')) {
                 localStorage.removeItem(STORAGE_KEY);
-                location.reload();
+                state = JSON.parse(JSON.stringify(defaultState));
+                init();
             }
+        };
+
+        const handleCustomItemSubmit = (e) => {
+            e.preventDefault();
+            const newItem = {
+                name: document.getElementById('custom-item-name').value,
+                description: document.getElementById('custom-item-desc').value,
+                price: parseInt(document.getElementById('custom-item-price').value),
+                quality: document.getElementById('custom-item-quality').value,
+                category: document.getElementById('custom-item-category').value,
+                uid: Date.now() + Math.random()
+            };
+
+            const destination = document.querySelector('input[name="inventory"]:checked').value;
+
+            // Add to the main database and the correct inventory
+            state.itemDatabase.push(newItem);
+            if (destination === 'personal') {
+                state.personalInventory.push(newItem);
+            } else {
+                state.workshopInventory.push(newItem);
+            }
+
+            showNotification(`Item customizado "${newItem.name}" adicionado!`, 'success');
+            saveState();
+            renderItems();
+            renderInventories();
+            customItemModal.classList.add('hidden');
+            customItemForm.reset();
         };
 
         // --- INITIALIZATION ---
         const init = () => {
-            loadState(); // Load saved data first
+            loadState();
             
             personalCreditsEl.addEventListener('blur', handleUpdateCredits);
             workshopCreditsEl.addEventListener('blur', handleUpdateCredits);
@@ -1070,6 +1172,9 @@
             closeCartBtn.addEventListener('click', () => cartEl.classList.add('translate-x-full'));
             checkoutBtn.addEventListener('click', handleCheckout);
             resetBtn.addEventListener('click', handleReset);
+            addCustomItemBtn.addEventListener('click', () => customItemModal.classList.remove('hidden'));
+            closeModalBtn.addEventListener('click', () => customItemModal.classList.add('hidden'));
+            customItemForm.addEventListener('submit', handleCustomItemSubmit);
             
             renderCredits();
             renderItems();
