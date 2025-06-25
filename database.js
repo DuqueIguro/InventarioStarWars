@@ -1,6 +1,59 @@
 // --- DATABASE ---
 let itemDatabase = [
-    
+   
+// --- EQUIPAMENTO (UTILITÁRIOS E FERRAMENTAS) ---
+
+    // -- Datapad
+    { name: "Datapad Rachado", category: "Equipamento", quality: "Baixa", price: 100, description: "A tela pisca constantemente e o processador é lento. Algumas funções podem não responder. Pelo menos liga (na maior parte do tempo)." },
+    { name: "Datapad Padrão", category: "Equipamento", quality: "Normal", price: 600, description: "Um datapad civil padrão. Usado para anotações, comunicação básica e acesso a redes públicas. Confiável, mas sem recursos avançados." },
+    { name: "Datapad Reforçado", category: "Equipamento", quality: "Boa", price: 1200, description: "Possui uma carcaça durável e é resistente à água e poeira. O processador é mais rápido e a bateria tem maior duração." },
+    { name: "Datapad Militar Criptografado", category: "Equipamento", quality: "Excelente", price: 4500, description: "Um datapad de nível militar com criptografia de ponta, processador veloz e acesso a redes seguras. Quase impossível de rastrear." },
+
+    // -- Kit de Ferramentas/Reparos
+    { name: "Kit de Ferramentas Usado", category: "Equipamento", quality: "Baixa", price: 80, description: "Faltam algumas peças e outras estão gastas. Bom para reparos simples, se você tiver sorte de encontrar a ferramenta certa." },
+    { name: "Kit de Reparos Padrão", category: "Equipamento", quality: "Normal", price: 200, description: "Um conjunto completo de ferramentas manuais para reparos básicos em dróides, veículos e sistemas simples." },
+    { name: "Kit de Reparos de Campo", category: "Equipamento", quality: "Boa", price: 650, description: "Inclui ferramentas de melhor qualidade e um mini soldador a fusão, permitindo reparos mais complexos em campo." },
+    { name: "Kit de Ferramentas de Mestre Técnico", category: "Equipamento", quality: "Excelente", price: 4400, description: "Um conjunto de alta precisão com scanner de diagnóstico integrado, micro-manipuladores e acesso a esquemas técnicos raros." },
+
+    // -- Cartão de Dados
+    { name: "Cartão de Dados de Baixa Capacidade", category: "Equipamento", quality: "Baixa", price: 10, description: "Lento e com pouquíssimo espaço. Há uma chance de corromper os dados se for ejetado de forma incorreta." },
+    { name: "Cartão de Dados Padrão", category: "Equipamento", quality: "Normal", price: 60, description: "Um cartão de dados comum, com capacidade e velocidade de leitura adequadas para a maioria das tarefas." },
+    { name: "Cartão de Dados de Alta Velocidade", category: "Equipamento", quality: "Boa", price: 200, description: "Possui grande capacidade de armazenamento e taxas de transferência muito rápidas. Ideal para transportar arquivos grandes." },
+    { name: "Cartão de Dados Criptografado", category: "Equipamento", quality: "Excelente", price: 1500, description: "Além da alta capacidade, possui um hardware de criptografia que protege os dados contra acesso não autorizado." },
+
+    // -- Chip de Crédito
+    { name: "Chip de Crédito Padrão", category: "Equipamento", quality: "Normal", price: 50, description: "Um chip de crédito padrão, vinculado a uma conta bancária galáctica. Funciona em qualquer terminal oficial." },
+
+    // -- Medpac
+    { name: "Medpac Quase Expirado", category: "Equipamento", quality: "Baixa", price: 40, description: "O agente de cura perdeu parte de sua eficácia. Estanca sangramentos, mas a recuperação é lenta." },
+    { name: "Medpac Padrão", category: "Equipamento", quality: "Normal", price: 240, description: "Contém spray de bacta e bandagens para tratar ferimentos leves e moderados de forma eficaz." },
+    { name: "Medpac de Campo", category: "Equipamento", quality: "Boa", price: 1100, description: "Inclui um injetor de bacta para cura rápida e estimulantes para reduzir os efeitos do choque e da dor." },
+    { name: "Medpac de Trauma Avançado", category: "Equipamento", quality: "Excelente", price: 2700, description: "Capaz de estabilizar ferimentos críticos, com coagulantes rápidos, e um mini-diagnóstico que sugere o tratamento correto." },
+
+    // -- Comlink Curta Distância
+    { name: "Comlink com Estática", category: "Equipamento", quality: "Baixa", price: 25, description: "O áudio é cheio de estática e o alcance é muito limitado, mesmo para um comlink de curta distância." },
+    { name: "Comlink de Pulso Padrão", category: "Equipamento", quality: "Normal", price: 75, description: "Um comunicador de pulso padrão, eficaz para comunicação dentro de uma cidade ou de uma nave grande." },
+    { name: "Comlink de Pulso (Áudio Limpo)", category: "Equipamento", quality: "Boa", price: 200, description: "Possui filtro de ruído, garantindo comunicação clara mesmo em ambientes barulhentos." },
+    { name: "Comlink Tático de Esquadrão", category: "Equipamento", quality: "Excelente", price: 1200, description: "Permite comunicação encriptada em um canal fechado com múltiplos usuários simultaneamente. Usado por forças especiais." },
+
+    // -- Comlink Longa Distância
+    { name: "Comlink de Longa Distância (Instável)", category: "Equipamento", quality: "Baixa", price: 250, description: "É volumoso e o sinal cai com frequência. Requer uma fonte de energia considerável para funcionar." },
+    { name: "Comlink de Longo Alcance Padrão", category: "Equipamento", quality: "Normal", price: 700, description: "Um comunicador de mão capaz de alcançar uma nave em órbita baixa ou contatar cidades vizinhas." },
+    { name: "Comlink de Longo Alcance (Sinal Reforçado)", category: "Equipamento", quality: "Boa", price: 2000, description: "Seu sinal é potente o suficiente para atravessar algumas interferências atmosféricas e bloqueadores de baixa potência." },
+    { name: "Comlink Holo-Criptografado", category: "Equipamento", quality: "Excelente", price: 5000, description: "Além do longo alcance, projeta um holograma instável do interlocutor e utiliza criptografia de nível diplomático." },
+
+    // -- Gerador de Energia
+    { name: "Gerador de Energia Barulhento", category: "Equipamento", quality: "Baixa", price: 300, description: "Funciona, mas produz um barulho ensurdecedor e superaquece com facilidade. Ineficiente no consumo de combustível." },
+    { name: "Gerador de Energia Portátil", category: "Equipamento", quality: "Normal", price: 800, description: "Um gerador confiável, capaz de alimentar as luzes e sistemas de um pequeno acampamento ou posto avançado." },
+    { name: "Gerador de Energia Silencioso", category: "Equipamento", quality: "Boa", price: 2000, description: "Produz a mesma quantidade de energia que o modelo padrão, mas é muito mais eficiente e quase totalmente silencioso." },
+    { name: "Gerador de Campo Furtivo", category: "Equipamento", quality: "Excelente", price: 6000, description: "Além de silencioso, este gerador é blindado contra a maioria dos sensores, ideal para operações secretas." },
+
+    // -- Eletrobinóculos
+    { name: "Eletrobinóculos Desgastados", category: "Equipamento", quality: "Baixa", price: 80, description: "As lentes estão arranhadas e o zoom é lento e impreciso. A imagem fica um pouco embaçada." },
+    { name: "Eletrobinóculos Padrão", category: "Equipamento", quality: "Normal", price: 250, description: "Oferece boa ampliação e uma imagem clara. Padrão para batedores e viajantes." },
+    { name: "Eletrobinóculos de Reconhecimento", category: "Equipamento", quality: "Boa", price: 700, description: "Possui modo de visão noturna, estabilizador de imagem e um medidor de distância básico." },
+    { name: "Eletrobinóculos de Franco-atirador", category: "Equipamento", quality: "Excelente", price: 2500, description: "Inclui múltiplos espectros de visão (térmica, EM), medidor de distância preciso e pode se conectar a um datapad para gravar." },
+
 // -- PEÇAS DE NAVES / LENDÁRIA
     { name: "Bobina de hiperespaço de precisão", category: "Peças de Naves", quality: "Lendária", price: 12800, description: "Uma bobina de nível de protótipo, que permite cálculos de micro-saltos em combate, uma tática favorecida pelos estrategistas Chiss." },
     { name: "Conversor de energia de fluxo otimizado", category: "Peças de Naves", quality: "Lendária", price: 4400, description: "Um conversor de energia de design experimental que otimiza a potência a níveis teóricos, permitindo rajadas de energia que podem sobrecarregar escudos inimigos." },
