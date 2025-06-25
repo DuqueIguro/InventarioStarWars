@@ -3,6 +3,16 @@ let itemDatabase = [
    
 // --- EQUIPAMENTO (UTILITÁRIOS E FERRAMENTAS) ---
 
+    // -- Cinto de Utilidades
+    { name: "Cinto de Couro Gasto", category: "Equipamento", quality: "Baixa", price: 150, description: "Um cinto velho com apenas alguns bolsos e presilhas. O material está ressecado e pode arrebentar se forçado." },
+    { name: "Cinto de Utilidades Padrão", category: "Equipamento", quality: "Normal", price: 800, description: "Um cinto de nylon ou couro com múltiplos bolsos e ganchos para carregar ferramentas, comlinks, células de energia e outros itens essenciais." },
+    { name: "Cinto de Utilidades de Mercenário", category: "Equipamento", quality: "Boa", price: 2400, description: "Feito de material reforçado, com mais compartimentos, um coldre de liberação rápida e presilhas magnéticas para equipamentos." },
+    { name: "Cinto de Utilidades Militar", category: "Equipamento", quality: "Excelente", price: 6000, description: "Um sistema modular completo com compartimentos de acesso rápido, uma fonte de energia integrada para recarregar dispositivos e material que disfarça a assinatura de calor." },
+
+    // -- Coldre
+    { name: "Coldre de Quadril", category: "Equipamento", quality: "Normal", price: 50, description: "Um coldre de quadril padrão, feito de couro ou polímero durável. Permite um saque rápido e seguro. O modelo mais comum na galáxia." },
+    { name: "Coldre Escondido", category: "Equipamento", quality: "Normal", price: 100, description: "Projetado para ser usado sob a roupa (no ombro, tornozelo ou costas), permitindo carregar uma pistola blaster de forma discreta e oculta." },
+
     // -- Datapad
     { name: "Datapad Rachado", category: "Equipamento", quality: "Baixa", price: 100, description: "A tela pisca constantemente e o processador é lento. Algumas funções podem não responder. Pelo menos liga (na maior parte do tempo)." },
     { name: "Datapad Padrão", category: "Equipamento", quality: "Normal", price: 600, description: "Um datapad civil padrão. Usado para anotações, comunicação básica e acesso a redes públicas. Confiável, mas sem recursos avançados." },
@@ -14,6 +24,12 @@ let itemDatabase = [
     { name: "Kit de Reparos Padrão", category: "Equipamento", quality: "Normal", price: 200, description: "Um conjunto completo de ferramentas manuais para reparos básicos em dróides, veículos e sistemas simples." },
     { name: "Kit de Reparos de Campo", category: "Equipamento", quality: "Boa", price: 650, description: "Inclui ferramentas de melhor qualidade e um mini soldador a fusão, permitindo reparos mais complexos em campo." },
     { name: "Kit de Ferramentas de Mestre Técnico", category: "Equipamento", quality: "Excelente", price: 4400, description: "Um conjunto de alta precisão com scanner de diagnóstico integrado, micro-manipuladores e acesso a esquemas técnicos raros." },
+
+    // -- Fita de Malha
+    { name: "Fita de Malha (Rolo Usado)", category: "Equipamento", quality: "Baixa", price: 1, description: "O que sobrou de um rolo de fita. A cola está um pouco fraca, mas ainda serve para prender coisas leves." },
+    { name: "Fita de Malha Padrão", category: "Equipamento", quality: "Normal", price: 5, description: "Um rolo de fita adesiva de malha multiuso. Essencial para reparos rápidos, prender equipamentos ou imobilizar um dróide barulhento." },
+    { name: "Fita de Malha Reforçada", category: "Equipamento", quality: "Boa", price: 15, description: "Uma versão mais forte e com um adesivo muito mais potente. Consegue segurar peças mais pesadas e resiste melhor à umidade." },
+    { name: "Fita de Malha Industrial", category: "Equipamento", quality: "Excelente", price: 100, description: "Fita de nível militar usada para selar temporariamente pequenas rupturas em cascos de naves ou trajes. Extremamente resistente." },
 
     // -- Cartão de Dados
     { name: "Cartão de Dados de Baixa Capacidade", category: "Equipamento", quality: "Baixa", price: 10, description: "Lento e com pouquíssimo espaço. Há uma chance de corromper os dados se for ejetado de forma incorreta." },
@@ -53,6 +69,20 @@ let itemDatabase = [
     { name: "Eletrobinóculos Padrão", category: "Equipamento", quality: "Normal", price: 250, description: "Oferece boa ampliação e uma imagem clara. Padrão para batedores e viajantes." },
     { name: "Eletrobinóculos de Reconhecimento", category: "Equipamento", quality: "Boa", price: 700, description: "Possui modo de visão noturna, estabilizador de imagem e um medidor de distância básico." },
     { name: "Eletrobinóculos de Franco-atirador", category: "Equipamento", quality: "Excelente", price: 2500, description: "Inclui múltiplos espectros de visão (térmica, EM), medidor de distância preciso e pode se conectar a um datapad para gravar." },
+
+// --- EQUIPAMENTO (TRAJES E ARMAS) ---
+
+    // -- Traje de Voo
+    { name: "Traje de Voo Remendado", category: "Equipamento", quality: "Baixa", price: 400, description: "Um traje antigo com múltiplos remendos e um cheiro peculiar. As vedações não são confiáveis e algumas conexões estão oxidadas." },
+    { name: "Traje de Voo Padrão", category: "Equipamento", quality: "Normal", price: 2000, description: "Um traje de voo padrão para pilotos, oferecendo proteção contra o frio e o fogo, com conexões básicas para sistemas de suporte de vida." },
+    { name: "Traje de Voo Reforçado", category: "Equipamento", quality: "Boa", price: 4000, description: "Feito com material mais resistente e com melhor isolamento térmico. Possui pontos de fixação para equipamentos e vedações de alta qualidade." },
+    { name: "Traje de Voo Pressurizado", category: "Equipamento", quality: "Excelente", price: 8000, description: "Um traje de nível militar que pode ser pressurizado para operações em vácuo por curtos períodos. Inclui um sistema de suporte de vida integrado e maior resistência a impactos, devido a blindagem." },
+
+    // -- Pistola Blaster
+    { name: "Pistola Blaster Velha", category: "Equipamento", quality: "Baixa", price: 150, description: "Uma arma barata e pouco confiável. Superaquece com facilidade e a precisão é questionável. É melhor que nada, talvez." },
+    { name: "Pistola Blaster Esportiva", category: "Equipamento", quality: "Normal", price: 600, description: "Um modelo civil, preciso e leve, mas com baixo poder de parada. Popular em competições de tiro e para autodefesa." },
+    { name: "Pistola Blaster de Serviço", category: "Equipamento", quality: "Boa", price: 1000, description: "Uma arma de serviço militar ou policial. Oferece um bom equilíbrio entre potência, precisão e cadência de tiro. Um equipamento sólido e confiável." },
+    { name: "Pistola Blaster Pesada", category: "Equipamento", quality: "Excelente", price: 1500, description: "Uma arma de mão de grosso calibre que causa dano significativo, capaz de perfurar armaduras leves. Seu coice e consumo de energia são consideráveis." },
 
 // -- PEÇAS DE NAVES / LENDÁRIA
     { name: "Bobina de hiperespaço de precisão", category: "Peças de Naves", quality: "Lendária", price: 12800, description: "Uma bobina de nível de protótipo, que permite cálculos de micro-saltos em combate, uma tática favorecida pelos estrategistas Chiss." },
